@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Exercise < ApplicationRecord
+  has_and_belongs_to_many :routines
+
   validates :description, presence: true
   validates :intensity, inclusion: { in: 0..10 }
 end

@@ -12,12 +12,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_220_328_190_413) do
+ActiveRecord::Schema[7.0].define(version: 20_220_328_191_940) do
   create_table 'exercises', force: :cascade do |t|
     t.string 'description', null: false
     t.integer 'intensity', null: false
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
+  end
+
+  create_table 'exercises_routines', id: false, force: :cascade do |t|
+    t.integer 'exercise_id', null: false
+    t.integer 'routine_id', null: false
   end
 
   create_table 'routines', force: :cascade do |t|
