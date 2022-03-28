@@ -12,7 +12,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_220_328_164_118) do
+ActiveRecord::Schema[7.0].define(version: 20_220_328_185_148) do
+  create_table 'routines', force: :cascade do |t|
+    t.string 'name', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['name'], name: 'index_routines_on_name', unique: true
+  end
+
   create_table 'users', force: :cascade do |t|
     t.string 'name'
     t.string 'email', default: '', null: false
