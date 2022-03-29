@@ -1,0 +1,5 @@
+<h1><%= @exercise.description %></h1>
+<p>Find me in app/views/exercises/show.html.erb</p>
+<p>Edit Exercise: <%= link_to "Edit", edit_exercise_path(@exercise) %></p>
+<p>Return to main page: <%= link_to "Main Page", root_path %></p>
+<p><%= button_to "Delete Exercise", @exercise, method: :delete %></p>
