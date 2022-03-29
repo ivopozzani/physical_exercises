@@ -1,0 +1,17 @@
+<% user = current_user.present? ? current_user.email : 'New User' %>
+
+<h1>Hello <%= user %>!</h1>
+
+<p>Here you'll find all Routines of Exercises</p>
+
+<% if current_user.present? %>
+<p>To add new routine: <%= link_to "New Routine", new_routine_path %></p>
+<% end %>
+
+<div class="container--big">
+    <% @routines.each do |routine| %>
+        <div class="card user">
+            <p>Name: <%= link_to routine.name, routine %></p>         
+        </div>
+    <% end %>
+</div>
