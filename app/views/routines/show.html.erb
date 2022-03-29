@@ -1,0 +1,5 @@
+<h1><%= @routine.name %></h1>
+<p>Here you will find all exercises that compose this routine</p>
+<p>Edit Routine: <%= link_to "Edit", edit_routine_path(@routine) %></p>
+<p>Return to main page: <%= link_to "Main Page", root_path %></p>
+<p><%= button_to "Delete Routine", @routine, method: :delete %></p>
