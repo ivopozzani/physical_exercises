@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_220_328_191_940) do
+ActiveRecord::Schema[7.0].define(version: 20_220_329_140_754) do
   create_table 'exercises', force: :cascade do |t|
     t.string 'description', null: false
     t.integer 'intensity', null: false
@@ -33,7 +33,6 @@ ActiveRecord::Schema[7.0].define(version: 20_220_328_191_940) do
   end
 
   create_table 'users', force: :cascade do |t|
-    t.string 'name'
     t.string 'email', default: '', null: false
     t.string 'encrypted_password', default: '', null: false
     t.string 'jwt_key'
