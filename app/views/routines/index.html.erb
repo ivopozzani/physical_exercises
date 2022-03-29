@@ -5,7 +5,10 @@
 <p>Here you'll find all Routines of Exercises</p>
 
 <% if current_user.present? %>
-  <p>To add new routine: <%= link_to "New Routine", new_routine_path %></p>
+<p>To add new routine: <%= link_to "New Routine", new_routine_path %></p>
+<p>Show all exercises available: <%= link_to "Exercises", exercises_path %>
+<p>To add new exercise: <%= link_to "New Exercise", new_exercise_path %></p>
+
 <% end %>
 
 <div>
