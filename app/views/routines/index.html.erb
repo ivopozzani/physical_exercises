@@ -1,20 +1,30 @@
-<% user = current_user.present? ? current_user.email : 'New User' %>
+<% user = current_user.present? ? current_user.email : 'Everyone' %>
 
 <h1>Hello <%= user %>!</h1>
 
 <p>Here you'll find all Routines of Exercises</p>
 
 <% if current_user.present? %>
-<p>To add new routine: <%= link_to "New Routine", new_routine_path %></p>
-<p>Show all exercises available: <%= link_to "Exercises", exercises_path %>
-<p>To add new exercise: <%= link_to "New Exercise", new_exercise_path %></p>
-
+  <p>To add new routine: <%= link_to "New Routine", new_routine_path %></p>
+  <p>Show all exercises available: <%= link_to "Exercises", exercises_path %>
+  <p>To add new exercise: <%= link_to "New Exercise", new_exercise_path %></p>
 <% end %>
 
-<div class="container--big">
-    <% @routines.each do |routine| %>
-        <div class="card user">
-            <p>Name: <%= link_to routine.name, routine %></p>         
+<div>
+  <% @routines.each do |routine| %>
+    <div class="card text-center" style="width: 18rem;">
+      <h3 class="card-title"><%= routine.name %></h3>         
+        
+      <% routine.exercises.each do |exercise| %>
+        <div class="card-body">
+          <p class="card-text">Exercise: <%= exercise.description %></p>
+          <p class="card-text">Intensity: <%= exercise.intensity %></p>   
         </div>
-    <% end %>
+      <% end %>
+
+      <div class="card-body">
+        <p class="card-link"><%= link_to 'Inpect', routine %></p>
+      </div>
+    </div>
+  <% end %>
 </div>

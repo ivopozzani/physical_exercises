@@ -33,7 +33,7 @@ class ExercisesController < ApplicationController
     @exercise = Exercise.find(params[:id])
 
     if @exercise.update(exercise_params)
-      redirect_to root_path
+      redirect_to exercises_path
     else
       render :edit
     end
