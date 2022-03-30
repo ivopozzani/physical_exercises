@@ -1,0 +1,18 @@
+<% user = current_user.present? ? current_user.email : 'New User' %>
+
+<h1><%= user %></h1>
+
+<p>These are all exercises currently available</p>
+<p>To add new exercise: <%= link_to "New Exercise", new_exercise_path %></p>
+<p>Return to main page: <%= link_to "Main Page", root_path %></p>
+
+<div class="container--big">
+  <% @exercises.each do |exercise| %>
+    <div class="card user">
+      <p>Description: <%= exercise.description %></p>         
+      <p>Intensity: <%= exercise.intensity %></p>
+      <%= link_to "Update", edit_exercise_path(exercise) %>
+      <%= button_to "Delete", exercise, method: :delete %>    
+    </div>
+  <% end %>
+</div>

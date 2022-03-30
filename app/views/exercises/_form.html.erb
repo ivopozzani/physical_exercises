@@ -1,0 +1,21 @@
+<%= form_with model: exercise do |form| %>
+  <div>
+    <%= form.label :description %>
+    <%= form.text_field :description %>
+    <% exercise.errors.full_messages_for(:description).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+  
+  <div>
+    <%= form.label :intensity %>
+    <%= form.number_field :intensity, in: 0..10, step: 1 %>
+    <% exercise.errors.full_messages_for(:intensity).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+  
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

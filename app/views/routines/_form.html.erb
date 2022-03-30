@@ -2,6 +2,7 @@
   <div>
     <%= form.label :name %>
     <%= form.text_field :name %>
+    <%= form.collection_check_boxes :exercise_ids, Exercise.all, :id, :description %>
     <% routine.errors.full_messages_for(:name).each do |message| %>
       <div><%= message %></div>
     <% end %>

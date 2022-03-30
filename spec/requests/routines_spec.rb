@@ -14,9 +14,7 @@ RSpec.describe 'Routines', type: :request do
     end
 
     it 'assigns @routines' do
-      routines = []
-      3.times { routines << create(:routine) }
-
+      routines = create_list(:routine, 3)      
       get routines_path
       expect(assigns(:routines)).to eq(routines)
     end
@@ -42,7 +40,12 @@ RSpec.describe 'Routines', type: :request do
   end
 
   describe 'POST /create' do
-    subject { post routines_path, headers:, params: { routine: { name: 'Routine' } } }
+    subject do
+      exercise1 = create(:exercise)
+      exercise2 = create(:exercise)
+      post routines_path, headers:,
+                          params: { routine: { name: 'Routine', exercise_ids: [exercise1.id, exercise2.id] } }
+    end
 
     it 'returns http found' do
       subject
