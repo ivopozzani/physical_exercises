@@ -9,7 +9,7 @@
   
   <div>
     <%= form.label :intensity %>
-    <%= form.text_field :intensity %>
+    <%= form.number_field :intensity, in: 0..10, step: 1 %>
     <% exercise.errors.full_messages_for(:intensity).each do |message| %>
       <div><%= message %></div>
     <% end %>
