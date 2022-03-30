@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :exercise do
-    description { 'MyString' }
-    intensity { 1 }
+    description { Faker::Name.name }
+    intensity { Faker::Number.between(from: 0, to: 10) }
   end
 end

@@ -2,6 +2,6 @@
 
 FactoryBot.define do
   factory :routine do
-    name { 'Routine' }
+    name { Faker::Name.unique.name }
   end
 end
