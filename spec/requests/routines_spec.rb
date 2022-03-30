@@ -14,7 +14,7 @@ RSpec.describe 'Routines', type: :request do
     end
 
     it 'assigns @routines' do
-      routines = create_list(:routine, 3)      
+      routines = create_list(:routine, 3)
       get routines_path
       expect(assigns(:routines)).to eq(routines)
     end
