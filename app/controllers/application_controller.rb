@@ -23,12 +23,12 @@ class ApplicationController < ActionController::Base
 
   def generate_user_jwt_token
     payload = { id: current_user.id, timestamp: Time.now }
-    token = JWT.encode payload, ENV['JWT_KEY'], 'HS256'
+    token = JWT.encode payload, ENV['JWT_KEY'], ENV['JWT_ALGORITHM']
     update_user_jwt(token)
   end
 
   def get_user_jwt_timestamp
-    decoded_token = JWT.decode current_user.jwt_key, ENV['JWT_KEY'], true, { algorithm: 'HS256' }
+    decoded_token = JWT.decode current_user.jwt_key, ENV['JWT_KEY'], true, { algorithm: ENV['JWT_ALGORITHM'] }
     decoded_token[0]['timestamp']
   end
 
