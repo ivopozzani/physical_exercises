@@ -10,9 +10,7 @@ class ApplicationController < ActionController::Base
 
     generate_user_jwt_token if current_user.jwt_key.nil?
 
-    timestamp = get_user_jwt_timestamp
-
-    if timestamp > Time.now - 5.minutes
+    if session_valid?
       generate_user_jwt_token
     else
       update_user_jwt(nil)
@@ -27,7 +25,11 @@ class ApplicationController < ActionController::Base
     update_user_jwt(token)
   end
 
-  def get_user_jwt_timestamp
+  def session_valid?
+    user_jwt_timestamp > Time.now - 5.minutes
+  end
+
+  def user_jwt_timestamp
     decoded_token = JWT.decode current_user.jwt_key, ENV['JWT_KEY'], true, { algorithm: ENV['JWT_ALGORITHM'] }
     decoded_token[0]['timestamp']
   end
